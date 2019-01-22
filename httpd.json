@@ -1,0 +1,25 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "source_image_family": "centos-7",
+      "account_file": "/home/ihusain1994/creds/serviceaccount.json",
+      "project_id": "clarapcp-ea-ilyas-husein",
+      "ssh_username": "jenkins",
+      "zone": "us-central1-a",
+      "network": "claranet-test",
+      "tags": ["ssh", "http-server"]
+    }
+  ],
+
+  "provisioners": [
+                {
+                        "type": "shell",
+                        "inline": [
+                        "sudo yum install -y httpd",
+                        "sudo systemctl start httpd",
+                        "sudo systemctl enable httpd"
+                      ]
+                }
+		]
+}
